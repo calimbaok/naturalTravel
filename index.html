@@ -1,0 +1,331 @@
+<!doctype html>
+
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Calimba — Natural Travel</title>
+  <meta name="description" content="Natural Travel — línea natural de Calimba: shampoo sólido, jabones, sahumerios y bálsamos." />
+  <style>
+    /* --- Palette (aprox. Pantone-inspired) ---
+       Deep Green:  #2C5F4D  (pantone-like)
+       Terracotta:  #D98E3B
+       Sand/Beige:  #F5EFE6
+       Charcoal:    #222222
+    */
+    :root{
+      --green: #2C5F4D;
+      --accent: #D98E3B;
+      --bg: #F5EFE6;
+      --char: #222222;
+      --muted: #7b7b7b;
+      --radius: 10px;
+      --maxw: 1100px;
+    }
+    *{box-sizing:border-box}
+    body{font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; margin:0; background:var(--bg); color:var(--char); -webkit-font-smoothing:antialiased}
+    .wrap{max-width:var(--maxw); margin:24px auto; padding:24px}header{display:flex;align-items:center;justify-content:space-between;gap:16px}
+.brand{display:flex;align-items:center;gap:12px}
+.logo{width:92px;height:92px;border-radius:12px;background:linear-gradient(180deg,var(--green), #1f4a3e);display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:18px}
+h1{margin:0;font-size:28px;letter-spacing:1px}
+nav{display:flex;gap:12px}
+nav a{color:var(--char);text-decoration:none;padding:8px 12px;border-radius:8px}
+nav a:hover{background:rgba(0,0,0,0.05)}
+
+/* Hero */
+.hero{display:grid;grid-template-columns:1fr 420px;gap:20px;align-items:center;margin:20px 0}
+.hero .text h2{font-size:34px;margin:0 0 8px}
+.hero .text p{color:var(--muted);margin:0 0 16px}
+.hero .art{background:white;border-radius:var(--radius);padding:12px;box-shadow:0 6px 20px rgba(0,0,0,0.06)}
+.van-img{width:100%;height:260px;background: url('img/van-image.jpg') center/contain no-repeat; center/contain no-repeat}
+
+/* Products grid */
+.products{margin-top:18px;display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.card{background:white;border-radius:12px;padding:14px;box-shadow:0 6px 18px rgba(0,0,0,0.06)}
+.card h3{margin:0 0 6px}
+.card p{color:var(--muted);margin:0 0 12px}
+
+/* Carousel basics */
+.carousel{position:relative;overflow:hidden;border-radius:8px;background:#faf9f7;padding:12px}
+.slides{display:flex;transition:transform 350ms ease}
+.slide{min-width:100%;padding:8px;display:flex;align-items:center;justify-content:center;position:relative}
+.slide img{max-width:100%;height:260px;object-fit:cover;border-radius:6px;border:1px solid rgba(0,0,0,0.06)}
+
+/* overlay (gober) */
+.overlay{position:absolute;inset:0;background:linear-gradient(180deg, rgba(0,0,0,0.0), rgba(0,0,0,0.45));color:white;display:flex;align-items:flex-end;justify-content:center;padding:14px;border-radius:6px;opacity:0;pointer-events:none;transition:opacity 180ms}
+.slide.show .overlay{opacity:1;pointer-events:auto}
+.overlay .prop{background:rgba(0,0,0,0.35);padding:8px 12px;border-radius:8px}
+
+.controls{display:flex;gap:8px;position:absolute;top:8px;right:8px}
+.ctrl-btn{background:rgba(255,255,255,0.9);border-radius:50%;width:36px;height:36px;display:flex;align-items:center;justify-content:center;box-shadow:0 3px 10px rgba(0,0,0,0.08);cursor:pointer}
+
+.card-footer{display:flex;gap:8px;align-items:center;justify-content:space-between;margin-top:12px}
+.qty{display:flex;gap:8px;align-items:center}
+.qty input{width:64px;padding:8px;border-radius:8px;border:1px solid #e0e0e0}
+.buy{background:var(--green);color:white;padding:10px 14px;border-radius:8px;border:none;cursor:pointer}
+
+.dots{display:flex;gap:6px;align-items:center;justify-content:center;margin-top:8px}
+.dot{width:9px;height:9px;border-radius:50%;background:#ddd}
+.dot.active{background:var(--accent)}
+
+footer{margin-top:30px;padding:18px 14px;border-radius:12px;background:#fff;display:flex;justify-content:space-between;align-items:center}
+
+/* responsive */
+@media (max-width:900px){
+  .hero{grid-template-columns:1fr}
+  .products{grid-template-columns:1fr}
+}
+
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <div class="logo">CALIMBA</div>
+        <div>
+          <h1>Natural Travel</h1>
+          <div style="color:var(--muted);font-size:14px">Cuidado de la piel y el alma en cada viaje</div>
+        </div>
+      </div>
+      <nav>
+        <a href="#inicio">Inicio</a>
+        <a href="#nosotras">Nosotras</a>
+        <a href="#productos">Productos</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+    </header><main>
+  <section class="hero" id="inicio">
+    <div class="text">
+      <h2>Bienvenid@ a Natural Travel</h2>
+      <p>Productos naturales y artesanales pensados para quienes viajan ligeros: shampoo sólido, jabones, sahumerios y bálsamos. Todo pensado para cuidar la piel y el alma.</p>
+      <a class="buy" href="#productos">Ver productos</a>
+    </div>
+    <div class="art">
+      <div class="van-img" aria-hidden="true"></div>
+    </div>
+  </section>
+
+  <section id="nosotras" style="margin-top:18px" class="card">
+    <h3>Nosotras</h3>
+    <p>Somos Flor y Gise, creadoras de Calimba y de la línea <strong>Natural Travel</strong>. Hacemos productos con ingredientes naturales, prácticos para llevar en la mochila o en la van.</p>
+  </section>
+
+  <section id="productos" style="margin-top:18px">
+    <h2>Productos destacados</h2>
+
+    <div class="products">
+      <!-- Shampoo sólido (3 imágenes) -->
+      <article class="card">
+        <h3>Shampoo sólido</h3>
+        <p>Fórmulas suaves y biodegradables. Ideal para viajeros.</p>
+        <div class="carousel" data-items="3" id="carousel-shampoo">
+          <div class="controls">
+            <div class="ctrl-btn" data-action="prev">‹</div>
+            <div class="ctrl-btn" data-action="next">›</div>
+          </div>
+          <div class="slides">
+            <div class="slide" data-prop="Aroma: Lavanda — 60g">
+              <img src="https://via.placeholder.com/800x500?text=Shampoo+1" alt="Shampoo Lavanda"/>
+              <div class="overlay"><div class="prop">Aroma: Lavanda — 60g</div></div>
+            </div>
+            <div class="slide" data-prop="Aroma: Romero — 60g">
+              <img src="https://via.placeholder.com/800x500?text=Shampoo+2" alt="Shampoo Romero"/>
+              <div class="overlay"><div class="prop">Aroma: Romero — 60g</div></div>
+            </div>
+            <div class="slide" data-prop="Aroma: Citrus — 60g">
+              <img src="https://via.placeholder.com/800x500?text=Shampoo+3" alt="Shampoo Citrus"/>
+              <div class="overlay"><div class="prop">Aroma: Citrus — 60g</div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-footer">
+          <div class="qty"><label>Cantidad</label><input type="number" min="1" value="1"/></div>
+          <button class="buy">Comprar</button>
+        </div>
+        <div class="dots" aria-hidden="true"></div>
+      </article>
+
+      <!-- Jabón artesanal (4 imágenes) -->
+      <article class="card">
+        <h3>Jabón artesanal</h3>
+        <p>Elaborados a mano con aceites naturales. Variedad de aromas.</p>
+        <div class="carousel" data-items="4" id="carousel-jabon">
+          <div class="controls">
+            <div class="ctrl-btn" data-action="prev">‹</div>
+            <div class="ctrl-btn" data-action="next">›</div>
+          </div>
+          <div class="slides">
+            <div class="slide" data-prop="Manteca de karité — Aroma: Azahar">
+              <img src="https://via.placeholder.com/800x500?text=Jabon+1" alt="Jabon Azahar"/>
+              <div class="overlay"><div class="prop">Manteca de karité — Aroma: Azahar</div></div>
+            </div>
+            <div class="slide" data-prop="Avena y miel — Hipoalergénico">
+              <img src="https://via.placeholder.com/800x500?text=Jabon+2" alt="Jabon Avena"/>
+              <div class="overlay"><div class="prop">Avena y miel — Hipoalergénico</div></div>
+            </div>
+            <div class="slide" data-prop="Arcilla verde — Limpieza profunda">
+              <img src="https://via.placeholder.com/800x500?text=Jabon+3" alt="Jabon Arcilla"/>
+              <div class="overlay"><div class="prop">Arcilla verde — Limpieza profunda</div></div>
+            </div>
+            <div class="slide" data-prop="Cítrico suave — Exfoliante leve">
+              <img src="https://via.placeholder.com/800x500?text=Jabon+4" alt="Jabon Citrus"/>
+              <div class="overlay"><div class="prop">Cítrico suave — Exfoliante leve</div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-footer">
+          <div class="qty"><label>Cantidad</label><input type="number" min="1" value="1"/></div>
+          <button class="buy">Comprar</button>
+        </div>
+        <div class="dots" aria-hidden="true"></div>
+      </article>
+
+      <!-- Sahumerios (5 imágenes) -->
+      <article class="card">
+        <h3>Sahumerios</h3>
+        <p>Composición natural para espacios de calma y limpieza energética.</p>
+        <div class="carousel" data-items="5" id="carousel-sahumerios">
+          <div class="controls">
+            <div class="ctrl-btn" data-action="prev">‹</div>
+            <div class="ctrl-btn" data-action="next">›</div>
+          </div>
+          <div class="slides">
+            <div class="slide" data-prop="Sahumerio: Palo Santo - 10 unidades">
+              <img src="https://via.placeholder.com/800x500?text=Sahumerio+1" alt="Palo Santo"/>
+              <div class="overlay"><div class="prop">Palo Santo - 10 unidades</div></div>
+            </div>
+            <div class="slide" data-prop="Sahumerio: Salvia Blanca - 10 unidades">
+              <img src="https://via.placeholder.com/800x500?text=Sahumerio+2" alt="Salvia"/>
+              <div class="overlay"><div class="prop">Salvia Blanca - 10 unidades</div></div>
+            </div>
+            <div class="slide" data-prop="Sahumerio: Copal - 10 unidades">
+              <img src="https://via.placeholder.com/800x500?text=Sahumerio+3" alt="Copal"/>
+              <div class="overlay"><div class="prop">Copal - 10 unidades</div></div>
+            </div>
+            <div class="slide" data-prop="Sahumerio: Lavanda - 10 unidades">
+              <img src="https://via.placeholder.com/800x500?text=Sahumerio+4" alt="Lavanda"/>
+              <div class="overlay"><div class="prop">Lavanda - 10 unidades</div></div>
+            </div>
+            <div class="slide" data-prop="Sahumerio: Mezcla calmante - 10 unidades">
+              <img src="https://via.placeholder.com/800x500?text=Sahumerio+5" alt="Mezcla"/>
+              <div class="overlay"><div class="prop">Mezcla calmante - 10 unidades</div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-footer">
+          <div class="qty"><label>Cantidad</label><input type="number" min="1" value="1"/></div>
+          <button class="buy">Comprar</button>
+        </div>
+        <div class="dots" aria-hidden="true"></div>
+      </article>
+
+      <!-- Bálsamos (3 imágenes) -->
+      <article class="card">
+        <h3>Bálsamos</h3>
+        <p>Bálsamos multiuso para piel reseca, labios o zonas puntuales.</p>
+        <div class="carousel" data-items="3" id="carousel-balsam">
+          <div class="controls">
+            <div class="ctrl-btn" data-action="prev">‹</div>
+            <div class="ctrl-btn" data-action="next">›</div>
+          </div>
+          <div class="slides">
+            <div class="slide" data-prop="Bálsamo: Eucalipto — 15g">
+              <img src="https://via.placeholder.com/800x500?text=Balsamo+1" alt="Balsamo Eucalipto"/>
+              <div class="overlay"><div class="prop">Eucalipto — 15g</div></div>
+            </div>
+            <div class="slide" data-prop="Bálsamo: Calendula — 15g">
+              <img src="https://via.placeholder.com/800x500?text=Balsamo+2" alt="Balsamo Calendula"/>
+              <div class="overlay"><div class="prop">Calendula — 15g</div></div>
+            </div>
+            <div class="slide" data-prop="Bálsamo: Lavanda — 15g">
+              <img src="https://via.placeholder.com/800x500?text=Balsamo+3" alt="Balsamo Lavanda"/>
+              <div class="overlay"><div class="prop">Lavanda — 15g</div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-footer">
+          <div class="qty"><label>Cantidad</label><input type="number" min="1" value="1"/></div>
+          <button class="buy">Comprar</button>
+        </div>
+        <div class="dots" aria-hidden="true"></div>
+      </article>
+    </div>
+  </section>
+
+</main>
+
+<footer id="contacto">
+  <div>
+    <strong>Calimba — Natural Travel</strong>
+    <div style="color:var(--muted)">Seguinos en @combicalimbaok • Pedidos por WhatsApp</div>
+  </div>
+  <div style="text-align:right;color:var(--muted)">© 2025 Calimba</div>
+</footer>
+
+  </div>  <script>
+    /* Minimal carousel logic + overlay on touch/click + dots + buy handlers */
+    document.querySelectorAll('.carousel').forEach(function(car){
+      const slidesWrap = car.querySelector('.slides');
+      const slides = Array.from(car.querySelectorAll('.slide'));
+      const total = slides.length;
+      let index = 0;
+
+      // create dots
+      const dotsWrap = car.parentElement.querySelector('.dots');
+      if(dotsWrap){
+        for(let i=0;i<total;i++){
+          const d=document.createElement('div');d.className='dot'+(i===0?' active':'');dotsWrap.appendChild(d);
+        }
+      }
+
+      function update(){
+        slidesWrap.style.transform = 'translateX('+(-index*100)+'%)';
+        slides.forEach((s,i)=> s.classList.toggle('show', i===index));
+        if(dotsWrap){
+          Array.from(dotsWrap.children).forEach((d,i)=> d.classList.toggle('active', i===index));
+        }
+      }
+
+      car.querySelectorAll('.ctrl-btn').forEach(btn=>{
+        btn.addEventListener('click', ()=>{
+          if(btn.dataset.action==='next') index = (index+1)%total; else index = (index-1+total)%total; update();
+        })
+      })
+
+      // overlay toggle on touch/click on each image
+      slides.forEach((s,i)=>{
+        s.addEventListener('click', (ev)=>{
+          // if already active, close it
+          if(s.classList.contains('show') && s.querySelector('.overlay').style.opacity=== '1'){
+            s.querySelector('.overlay').style.opacity='0';
+          } else {
+            // hide others
+            slides.forEach(x=> x.querySelector('.overlay').style.opacity='0');
+            s.querySelector('.overlay').style.opacity='1';
+            // read the property into overlay (already present from data-prop)
+            const prop = s.dataset.prop || '';
+            s.querySelector('.prop').textContent = prop;
+          }
+        })
+      })
+
+      // init
+      update();
+    })
+
+    // buy buttons
+    document.querySelectorAll('.card .buy').forEach(btn=>{
+      btn.addEventListener('click', (e)=>{
+        const card = e.target.closest('.card');
+        const title = card.querySelector('h3').textContent;
+        const qty = card.querySelector('.qty input').value||1;
+        alert('Añadido al carrito:\n'+title+' — Cantidad: '+qty);
+      })
+    })
+  </script></body>
+</html>
