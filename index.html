@@ -6,6 +6,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Calimba — Natural Travel</title>
+  <link rel="icon" type="image/jpg" href="images/favicon-32x32.png"/>
   <meta name="description" content="Natural Travel — línea natural de Calimba: shampoo sólido, jabones, sahumerios y bálsamos." />
   <link rel="stylesheet" href="style.css">
 </head>
@@ -95,7 +96,7 @@
           </div>
 
         <div class="card-footer">
-          <div class="qty"><label>Cantidad</label><input type="number" min="1" value="1"/></div>
+          <div class="price">Precio: $100 c/u</div>
           <button class="buy">Comprar</button>
         </div>
         <div class="dots" aria-hidden="true"></div>
@@ -172,7 +173,7 @@
           </div>
 
         <div class="card-footer">
-          <div class="qty"><label>Cantidad</label><input type="number" min="1" value="1"/></div>
+          <div class="price">Precio: $100 c/u</div>
           <button class="buy">Comprar</button>
         </div>
         <div class="dots" aria-hidden="true"></div>
@@ -277,7 +278,7 @@
           </div>
 
         <div class="card-footer">
-          <div class="qty"><label>Cantidad</label><input type="number" min="1" value="1"/></div>
+          <div class="price">Desde: $60 c/u</div>
           <button class="buy">Comprar</button>
         </div>
         <div class="dots" aria-hidden="true"></div>
@@ -286,26 +287,26 @@
       <!-- Bálsamos (3 imágenes) -->
       <article class="card">
         <h3>Bálsamos</h3>
-        <p>Bálsamos multiuso para piel reseca, labios o zonas puntuales.</p>
+        <p>Bálsamos multiuso para piel reseca, labios, dolor o relajantes.</p>
         <div class="carousel" data-items="3" id="carousel-balsam">
           <div id="carouselBalsam" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
               <div class="carousel-item active">
-                <img src="https://via.placeholder.com/800x500?text=Balsamo+1" class="d-block w-100" alt="Balsamo Eucalipto">
+                <img src="img/balsamo_calendula.png" class="d-block w-100" alt="Balsamo Eucalipto">
                 <div class="carousel-caption d-none d-md-block">
-                  <div class="prop">Eucalipto — 15g</div>
+                  <div class="prop">Humectación: Calendula 30mlg</div>
                 </div>
               </div>
               <div class="carousel-item">
-                <img src="https://via.placeholder.com/800x500?text=Balsamo+2" class="d-block w-100" alt="Balsamo Calendula">
+                <img src="img/balsamo_cbd.png" class="d-block w-100" alt="Balsamo CBD">
                 <div class="carousel-caption d-none d-md-block">
-                  <div class="prop">Calendula — 15g</div>
+                  <div class="prop">Dolor: CBD 30ml</div>
                 </div>
               </div>
               <div class="carousel-item">
-                <img src="https://via.placeholder.com/800x500?text=Balsamo+3" class="d-block w-100" alt="Balsamo Lavanda">
+                <img src="img/balsamo_lavanda.png" class="d-block w-100" alt="Balsamo Lavanda">
                 <div class="carousel-caption d-none d-md-block">
-                  <div class="prop">Lavanda — 15g</div>
+                  <div class="prop">Relajante: Lavanda 30ml</div>
                 </div>
               </div>
             </div>
@@ -325,7 +326,7 @@
           </div>
 
         <div class="card-footer">
-          <div class="qty"><label>Cantidad</label><input type="number" min="1" value="1"/></div>
+          <div class="price">Precio desde: $150 c/u</div>
           <button class="buy">Comprar</button>
         </div>
         <div class="dots" aria-hidden="true"></div>
@@ -353,7 +354,7 @@
               <div class="carousel-item">
                 <img src="img/vista_2.jpg" class="d-block w-100" alt="Botella Cristal 3">
                 <div class="carousel-caption d-none d-md-block">
-                  <div class="prop">Cristales Energeticosg</div>
+                  <div class="prop">Cristales Energeticos</div>
                 </div>
               </div>
             </div>
@@ -373,7 +374,7 @@
           </div>
 
         <div class="card-footer">
-          <div class="qty"><label>Cantidad</label><input type="number" min="1" value="1"/></div>
+          <div class="price">Precio: $800 c/u</div>
           <button class="buy">Comprar</button>
         </div>
         <div class="dots" aria-hidden="true"></div>
@@ -395,6 +396,18 @@
   </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+<script>
+  document.querySelectorAll(".card").forEach(card => {
+    const productName = card.querySelector("h3")?.innerText.trim(); 
+    const button = card.querySelector(".buy");
+    if (button && productName) {
+      const message = `Me gustaría adquirir ${productName}`;
+      const url = `https://api.whatsapp.com/send?phone=541153842626&text=${encodeURIComponent(message)}`;
+      button.setAttribute("onclick", `window.open('${url}', '_blank')`);
+    }
+  });
+</script>
+
 </body>
 </html>
 </body>
